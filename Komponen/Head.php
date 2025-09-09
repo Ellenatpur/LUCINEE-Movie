@@ -1,0 +1,532 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Movie Navbar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333333; /* Lebih gelap sesuai Figma */
+      padding: 12px 30px;
+      height: 60px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 35px;
+      width: auto;
+    }
+
+    .logo-text {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .logo-text .highlight {
+      color: #ff4444; /* Warna merah untuk aksen */
+    }
+
+    /* Search bar */
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 25px;
+      padding: 8px 15px;
+      width: 300px;
+      position: relative;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding: 5px 10px;
+      font-size: 14px;
+      background: transparent;
+    }
+
+    .search-box input::placeholder {
+      color: #999;
+    }
+
+    .search-box button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666;
+      padding: 5px;
+    }
+
+    .search-box button:hover {
+      color: #333;
+    }
+
+    /* Menu kanan */
+ .menu {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  color: white;
+  font-size: 13px;
+}
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+
+    .menu-item i {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    /* Styling untuk gambar icon */
+    .menu-item img {
+      width: 20px;
+      height: 20px;
+      margin-bottom: 4px;
+      filter: brightness(0) invert(1); /* Membuat gambar jadi putih */
+    }
+
+    .menu-item:hover img {
+      filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(340deg); /* Hover jadi merah */
+    }
+
+    .menu-item:hover {
+      color: #ff4444;
+    }
+
+    /* Tombol VIP */
+    .vip-btn {
+      background: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .vip-btn:hover {
+      background: #f0f0f0;
+      transform: translateY(-1px);
+    }
+
+    .vip-btn i {
+      color: #ffd700;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 10px 20px;
+      }
+      
+      .search-box {
+        width: 200px;
+      }
+      
+      .menu {
+        gap: 15px;
+        font-size: 12px;
+      }
+      
+      .menu-item {
+        display: none;
+      }
+      
+      .menu-item:last-child {
+        display: block;
+      }
+    }
+    
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000; /* warna hitam biar mirip bioskop */
+      color: #fff;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 20px;
+    }
+
+    .movie-row {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding: 20px;
+      scroll-behavior: smooth;
+    }
+
+    .movie-card {
+  flex: 0 0 auto;
+  width: 330px;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* biar gambar nggak gepeng */
+  display: block;
+}
+
+
+    .movie-card:hover {
+      transform: scale(1.1); /* zoom in */
+      box-shadow: 0 8px 20px rgba(255,255,255,0.3); /* glow putih */
+    }
+
+    /* Content Sections Container */
+.content-sections {
+  background: #000;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Individual Content Category */
+.content-category {
+  margin-bottom: 40px;
+}
+
+.content-category h2 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Poster Container - Horizontal Scroll */
+.poster-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.poster-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+/* Poster Item */
+.poster-item {
+  flex: 0 0 auto;
+  width: 140px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.poster-item:hover {
+  transform: scale(1.05);
+}
+
+.poster-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Poster Details */
+.poster-details {
+  padding: 10px;
+  text-align: center;
+}
+
+.poster-title {
+  color: white;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+/* Navigation Arrow */
+.nav-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.nav-arrow:hover {
+  opacity: 1;
+  background: rgba(0,0,0,0.9);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poster-item {
+    width: 120px;
+  }
+  
+  .poster-item img {
+    height: 180px;
+  }
+  
+  .content-category h2 {
+    font-size: 20px;
+  }
+}
+
+/* Hero Banner Container */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Sesuaikan tinggi */
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay untuk text */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.8) 0%,
+    rgba(0,0,0,0.6) 50%,
+    rgba(0,0,0,0.2) 100%
+  );
+  display: flex;
+  align-items: end;
+  padding: 40px;
+}
+
+/* Hero Content */
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-title {
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Badges */
+.hero-badges {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.badge-vip {
+  background: #ff4444;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.badge-digital {
+  background: #333;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hero-description {
+  color: white;
+  font-size: 14px;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 300px;
+  }
+  
+  .hero-overlay {
+    padding: 20px;
+  }
+  
+  .hero-content {
+    max-width: 70%;
+  }
+  
+  .hero-title {
+    font-size: 32px;
+  }
+}
+.top-rekomen{
+    background-color: black;
+    padding: 20px;
+
+    
+}
+ .footer {
+      background: #fff;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    /* Logo Teks */
+    .logo-text {
+      font-size: 28px;
+      font-weight: bold;
+      font-family: 'Georgia', serif;
+      margin-bottom: 10px;
+    }
+
+    .logo-text .el {
+      color: red;
+    }
+
+    .logo-text .movie {
+      color: black;
+    }
+
+    .footer .logo-section {
+      max-width: 250px;
+    }
+
+    .footer .logo-section p {
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .footer .store-buttons img {
+      width: 120px;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .footer .column {
+      min-width: 150px;
+    }
+
+    .footer .column h4 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .footer .column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer .column ul li {
+      margin: 6px 0;
+    }
+
+    .footer .column ul li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+    }
+
+    .footer .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+      font-size: 24px;
+    }
+
+    .footer .social-icons a {
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .footer .social-icons a:hover {
+      color: red;
+    }
+
+    /* Bagian bawah di dalam box putih */
+    .footer-bottom {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+  </style>
+
+  <!-- Font Awesome icons -->
+  <script src="https://kit.fontawesome.com/4fce9b3f3e.js" crossorigin="anonymous"></script>
+</head>
