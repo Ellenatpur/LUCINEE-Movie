@@ -1,8 +1,1078 @@
 <!DOCTYPE html>
 <html lang="id">
-
-<body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Movie Navbar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333333; /* Lebih gelap sesuai Figma */
+      padding: 12px 30px;
+      height: 60px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 35px;
+      width: auto;
+    }
+
+    .logo-text {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .logo-text .highlight {
+      color: #ff4444; /* Warna merah untuk aksen */
+    }
+
+    /* Search bar */
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 25px;
+      padding: 8px 15px;
+      width: 300px;
+      position: relative;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding: 5px 10px;
+      font-size: 14px;
+      background: transparent;
+    }
+
+    .search-box input::placeholder {
+      color: #999;
+    }
+
+    .search-box button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666;
+      padding: 5px;
+    }
+
+    .search-box button:hover {
+      color: #333;
+    }
+
+    /* Menu kanan */
+ .menu {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  color: white;
+  font-size: 13px;
+}
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+
+    .menu-item i {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    /* Styling untuk gambar icon */
+    .menu-item img {
+      width: 20px;
+      height: 20px;
+      margin-bottom: 4px;
+      filter: brightness(0) invert(1); /* Membuat gambar jadi putih */
+    }
+
+    .menu-item:hover img {
+      filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(340deg); /* Hover jadi merah */
+    }
+
+    .menu-item:hover {
+      color: #ff4444;
+    }
+
+    /* Tombol VIP */
+    .vip-btn {
+      background: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .vip-btn:hover {
+      background: #f0f0f0;
+      transform: translateY(-1px);
+    }
+
+    .vip-btn i {
+      color: #ffd700;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 10px 20px;
+      }
+      
+      .search-box {
+        width: 200px;
+      }
+      
+      .menu {
+        gap: 15px;
+        font-size: 12px;
+      }
+      
+      .menu-item {
+        display: none;
+      }
+      
+      .menu-item:last-child {
+        display: block;
+      }
+    }
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000; /* warna hitam biar mirip bioskop */
+      color: #fff;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 20px;
+    }
+
+    .movie-row {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding: 20px;
+      scroll-behavior: smooth;
+    }
+
+    .movie-card {
+  flex: 0 0 auto;
+  width: 330px;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+   font-family: Arial, sans-serif;
+    color: white;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* biar gambar nggak gepeng */
+  display: block;
+  border-radius: 10px;
+}
+.movie-card p {
+     margin-top: 8px;
+      font-size: 16px;
+      font-weight: bold;
+}
+
+
+    .movie-card:hover {
+      transform: scale(1.1); /* zoom in */
+      box-shadow: 0 8px 20px rgba(255,255,255,0.3); /* glow putih */
+    }
+
+    /* Content Sections Container */
+.content-sections {
+  background: #000;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Individual Content Category */
+.content-category {
+  margin-bottom: 40px;
+}
+
+.content-category h2 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Poster Container - Horizontal Scroll */
+.poster-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.poster-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+/* Poster Item */
+.poster-item {
+  flex: 0 0 auto;
+  width: 140px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.poster-item:hover {
+  transform: scale(1.05);
+}
+
+.poster-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Poster Details */
+.poster-details {
+  padding: 10px;
+  text-align: center;
+}
+
+.poster-title {
+  color: white;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+/* Navigation Arrow */
+.nav-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.nav-arrow:hover {
+  opacity: 1;
+  background: rgba(0,0,0,0.9);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poster-item {
+    width: 120px;
+  }
+  
+  .poster-item img {
+    height: 180px;
+  }
+  
+  .content-category h2 {
+    font-size: 20px;
+  }
+}
+
+/* Hero Banner Container */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Sesuaikan tinggi */
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay untuk text */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.8) 0%,
+    rgba(0,0,0,0.6) 50%,
+    rgba(0,0,0,0.2) 100%
+  );
+  display: flex;
+  align-items: end;
+  padding: 40px;
+}
+
+/* Hero Content */
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-title {
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Badges */
+.hero-badges {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.badge-vip {
+  background: #ff4444;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.badge-digital {
+  background: #333;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hero-description {
+  color: white;
+  font-size: 14px;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 300px;
+  }
+  
+  .hero-overlay {
+    padding: 20px;
+  }
+  
+  .hero-content {
+    max-width: 70%;
+  }
+  
+  .hero-title {
+    font-size: 32px;
+  }
+}
+.top-rekomen{
+    background-color: black;
+    padding: 20px;
+
+    
+}
+
+
+
+
+
+
+
+.footer {
+      background: #fff;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    /* Logo Teks */
+    .logo-text {
+      font-size: 28px;
+      font-weight: bold;
+      font-family: 'Georgia', serif;
+      margin-bottom: 10px;
+    }
+
+    .logo-text .el {
+      color: red;
+    }
+
+    .logo-text .movie {
+      color: black;
+    }
+
+    .footer .logo-section {
+      max-width: 250px;
+    }
+
+    .footer .logo-section p {
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .footer .store-buttons img {
+      width: 120px;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .footer .column {
+      min-width: 150px;
+    }
+
+    .footer .column h4 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .footer .column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer .column ul li {
+      margin: 6px 0;
+    }
+
+    .footer .column ul li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+    }
+
+    .footer .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+      font-size: 24px;
+    }
+
+    .footer .social-icons a {
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .footer .social-icons a:hover {
+      color: red;
+    }
+
+    /* Bagian bawah di dalam box putih */
+    .footer-bottom {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+  </style>
+
+  <!-- Font Awesome icons -->
+  <script src="https://kit.fontawesome.com/4fce9b3f3e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar">
+    <!-- Logo -->
+
+      <div class="logo-text">
+        <span class="highlight">EL</span>_MOVIE
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <!-- Menu kanan -->
+    <div class="menu">
+      <a href="#" class="menu-item">
+        <img src="/asset/icons8-save-24.png" alt="Tersimpan">
+        <span>Tersimpan</span>
+      </a>
+      <a href="#" class="menu-item">
+        <img src="/asset/icons8-globe-50.png" alt="Bahasa">
+        <span>Bahasa</span>
+      </a>
+      <a href="#" class="menu-item">
+        <img src="/asset/icons8-history-24.png" alt="Riwayat">
+        <span>Riwayat</span>
+      </a>
+      <button class="vip-btn">
+  VIP <img src="/asset/icons8-crown-24.png" alt="Crown">
+</button>
+    </div>
+  </nav>
+
+      <div class="hero-banner">
+  <img src="/asset/Encanto (2021) Disney_.jpg" alt="Encanto">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1 class="hero-title">Calon Bini</h1>
+      <div class="hero-badges">
+        <span class="badge-vip">VIP</span>
+        <span class="badge-digital">Digital</span>
+      </div>
+      <p class="hero-description">VIP : Setiap hari pukul 14:00 WIB (2EP/hari), mulai dari 30 Juli</p>
+    </div>
+  </div>
+</div>
+
+<!--- START HISTORY --->
+  <h2>History Tontonan</h2>
+  <div class="movie-row">
+    <div class="movie-card">
+        <img src="/asset/Encanto (2021) Disney_.jpg"alt="Movie 1">
+    <p>Ecanto 2</p>
+    </div>
+    <div class="movie-card">
+        <img src="/asset/“Upin & Ipin_ Keris Siamang Tunggal”_ Beyond Animation.jpg"alt="Movie">
+        <p>Upin & Ipin</p>
+    </div>
+    <div class="movie-card">
+        <img src="/asset/Watch Luca _ Disney+.jpg" alt="Luca">
+        <p>Luca</p>
+     </div>
+    <div class="movie-card">
+         <img src="/asset/Titanic Ai Thumbnail.jpg" alt="Titanic">
+         <p>Titanic</p>
+        </div>
+    <div class="movie-card"> 
+        <img src="/asset/Watch Luca _ Disney+.jpg" alt="">
+        <p>Luca</p>
+    </div>
+
+    </div>
+  </div>
+
+  <!--END HISTORY-->
+
+  <!--START SEGERA TAYANG-->
+  <h2>Segera Tayang</h2>
+  <div class="movie-row">
+    <div class="movie-card">
+        <img src="/asset/Encanto (2021) Disney_.jpg" alt="Movie 6">
+        <P>Ecanto</P>
+    </div>
+    <div class="movie-card">
+        <img src="/asset/Watch Luca _ Disney+.jpg" alt="Movie 7">
+        <p>Luca</p>
+    </div>
+    <div class="movie-card">
+        <img src="/asset/Watch Frozen 2 _ Disney+.jpg" alt="Movie 8">
+        <p>Frozen</p>
+    </div>
+    <div class="movie-card">
+        <img src="/asset/Titanic Ai Thumbnail.jpg" alt="Movie 9">
+        <p>Titanic</p>
+    </div>
+    <div class="movie-card">
+        <img src="/asset/“Upin & Ipin_ Keris Siamang Tunggal”_ Beyond Animation.jpg" alt="Movie 10">
+    <p>Upin & Ipin</p>
+</div>
+  </div>
+<!---END SEGERA TAYANG-->
+
+  <div class="content-sections">
+
+  <!-- Drama Indonesia -->
+  <div class="content-category">
+<div class="top-rekomen">
+
+    <h2>Drama Indonesia</h2>
+    <div class="category-card">
+    <div class="poster-container">
+      <div class="poster-item">
+        <img src="/asset/Hafalan Shalat Delisa.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Hafalan Shalat Delisa</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Hanum & Rangga.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Hanum & Rangga</span>
+        </div>
+      </div>
+
+    <div class="poster-item">
+        <img src="/asset/calon bini.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Calon Bini</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/cinta laki laki biasa.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Cinta Laki-Laki Biasa</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Belok Kanan Barcelona (2018).jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Belok Kanan Barcelona</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Cemara's Family (2018).jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Keluarga Cemara</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Cemara's Family (2018).jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Keluarga Cemara</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Cemara's Family (2018).jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Keluarga Cemara</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Cemara's Family (2018).jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Keluarga Cemara</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Cemara's Family (2018).jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Keluarga Cemara</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Cemara's Family (2018).jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Keluarga Cemara</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Cemara's Family (2018).jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Keluarga Cemara</span>
+        </div>
+      </div>
+      
+      <div class="nav-arrow">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  <!-- Serial Anak-Anak -->
+  <div class="content-category">
+    <h2>Serial Anak-Anak</h2>
+  
+    <div class="poster-container">
+      <div class="poster-item">
+        <img src="/asset/coco.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Coco</span>
+        </div>
+      </div>
+    
+      <div class="poster-item">
+        <img src="/asset/Dora the Explorer and the Lost City of Gold Poster.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Dora The Explorer</span>
+        </div>
+      </div>
+    
+      <div class="poster-item">
+        <img src="/asset/best film ever idc.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Smurfs</span>
+        </div>
+      </div>
+    
+      <div class="poster-item">
+        <img src="/asset/animasi anak.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Case Closed</span>
+        </div>
+      </div>
+    
+      <div class="poster-item">
+        <img src="/asset/casa.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Casa</span>
+        </div>
+      </div>
+      
+      <div class="poster-item">
+        <img src="/asset/rumah untuk alie.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Rumah Untuk Alie</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/rumah untuk alie.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Rumah Untuk Alie</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/rumah untuk alie.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Rumah Untuk Alie</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/rumah untuk alie.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Rumah Untuk Alie</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/rumah untuk alie.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Rumah Untuk Alie</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/rumah untuk alie.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Rumah Untuk Alie</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/rumah untuk alie.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Rumah Untuk Alie</span>
+        </div>
+      </div>
+      
+      <div class="nav-arrow">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drama China -->
+  <div class="content-category">
+    <h2>Drama-China</h2>
+    <div class="poster-container">
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/someday of one day.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">someday of One Day</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Always Home 2024 _ Всегда дома 2024.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Always Home</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/go ahead.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Go ahead</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Hidden Love.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Hidden Love</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/Just For Meeting You _ Только ради встречи с тобой.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Just For Meting You</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/love has firework.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Love Ha Fireworks</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+
+  
+      <div class="nav-arrow">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content-category">
+    <h2>Drama-China</h2>
+    <div class="poster-container">
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+      
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+      
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+      
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+      
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+
+      <div class="poster-item">
+        <img src="/asset/be yourself.jpg" alt="Movie Title">
+        <div class="poster-details">
+          <span class="poster-title">Be yourself</span>
+        </div>
+      </div>
+</div>
+</div>
+      
+      </div>
+
+       <footer>
+    <div class="footer">
+     
+      <div class="logo-section">
+        <div class="logo-text">
+          <span class="el">El</span><span class="movie"> Movie</span>
+        </div>
+        <p style="color: #000;">Download aplikasi El_Movie dan dapatkan akses hiburan kapan pun !</p>
+        <div class="store-buttons">
+        </div>
+      </div>
+
+      <!-- Navigasi Cepat -->
+      <div class="column">
+        <h4 style="color: #000;">Navigasi Cepat</h4>
+        <ul>
+          <li><a href="http://127.0.0.1:5500/HomePage.html">Beranda</a></li>
+          <li><a href="#">Film Populer</a></li>
+          <li><a href="#">Genre</a></li>
+          <li><a href="#">Coming Soon</a></li>
+          <li><a href="#">Rekomendasi</a></li>
+        </ul>
+      </div>
+
+      <!-- Sosial Media -->
+      <div class="column">
+        <h4 style="color: #000;">Sosial Media</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+
+      <!-- Info Tambahan -->
+      <div class="column">
+        <h4 style="color: #000;">Info Tambahan</h4>
+        <ul>
+          <li><a href="#">Kebijakan Privasi</a></li>
+          <li><a href="#">Syarat & Ketentuan</a></li>
+          <li><a href="#">Copyright</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <!-- Bagian Bawah sekarang di dalam footer -->
+      <div class="footer-bottom" style="color: #000;">
+        Lucinee_Elaraa
+      </div>
+    </div>
+  </footer>
 
 
 </body>
