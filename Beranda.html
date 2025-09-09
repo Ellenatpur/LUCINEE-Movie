@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELMOVIE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: #000;
+    }
+
+    .navbar h1 {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .navbar h1 span {
+      color: red;
+    }
+
+    .navbar .menu {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .navbar input {
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+
+    /* Hero Banner */
+    .hero {
+      width: 100%;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .hero h2 {
+      font-size: 28px;
+      background: rgba(0,0,0,0.6);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    /* Section */
+    .section {
+      padding: 20px;
+    }
+
+    .section h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .movie-list {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .movie-card {
+      min-width: 150px;
+      height: 220px;
+      border-radius: 10px;
+      background: #333;
+      flex-shrink: 0;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    /* Scroll bar hilang */
+    .movie-list::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1><span>EL</span>MOVIE</h1>
+    <div class="menu">
+      <input type="text" placeholder="Search...">
+      <a href="#">Terimpan</a>
+      <a href="#">Bahasa</a>
+      <a href="#">Riwayat</a>
+      <a href="#">VIP</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero" id="hero">
+    <h2>Calon Bini</h2>
+  </div>
+
+  <!-- Sections -->
+  <div class="section">
+    <h3>History Tontonan</h3>
+    <div class="movie-list">
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Segera Tayang</h3>
+    <div class="movie-list">
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Drama Indonesia</h3>
+    <div class="movie-list">
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Serial Anak-Anak</h3>
+    <div class="movie-list">
+        <img src="jumbo" alt="">
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+      <div class="movie-card"></div>
+    </div>
+  </div>
+
+  <!-- Script untuk ganti hero otomatis -->
+  <script>
+    const hero = document.getElementById("hero");
+    const images = [
+      "https://via.placeholder.com/1200x300/ff5733/fff?text=Banner+1",
+      "https://via.placeholder.com/1200x300/33c1ff/fff?text=Banner+2",
+      "https://via.placeholder.com/1200x300/28a745/fff?text=Banner+3"
+    ];
+    let index = 0;
+
+    function changeHero() {
+      hero.style.backgroundImage = `url('${images[index]}')`;
+      index = (index + 1) % images.length;
+    }
+
+    changeHero();
+    setInterval(changeHero, 5000);
+  </script>
+
+</body>
+</html>
+
