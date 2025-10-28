@@ -1,57 +1,73 @@
 <style>
-        .logo-text {
-      font-size: 28px;
-      font-weight: bold;
-      font-family: 'Georgia', serif;
-      margin-bottom: 10px;
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333333; /* Lebih gelap sesuai Figma */
+      padding: 12px 30px;
+      height: 60px;
     }
 
-      .search-box {
-        width: 200px;
-      }
-
-          .vip-btn i {
-      color: #ffd700;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 10px 20px;
-      }
-       
-      .menu {
-        gap: 15px;
-        font-size: 12px;
-      }
-      
-      .menu-item {
-        display: none;
-      }
-      
-      .menu-item:last-child {
-        display: block;
-      }
-    }
-        .vip-btn {
-      background: white;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 20px;
-      cursor: pointer;
+    /* Logo */
+    .logo {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: bold;
-      color: #333;
-      transition: all 0.3s ease;
+      gap: 10px;
     }
 
-    .vip-btn:hover {
-      background: #f0f0f0;
-      transform: translateY(-1px);
+    .logo img {
+      height: 35px;
+      width: auto;
     }
+
+    .logo-text {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .logo-text .highlight {
+      color: #ff4444; /* Warna merah untuk aksen */
+    }
+
+    /* Search bar */
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 25px;
+      padding: 8px 15px;
+      width: 300px;
+      position: relative;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding: 5px 10px;
+      font-size: 14px;
+      background: transparent;
+    }
+
+    .search-box input::placeholder {
+      color: #999;
+    }
+
+    .search-box button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666;
+      padding: 5px;
+    }
+
+    .search-box button:hover {
+      color: #333;
+    }
+
+    /* Menu kanan */
  .menu {
   display: flex;
   align-items: center;
@@ -70,23 +86,75 @@
       padding: 5px 0;
       transition: color 0.3s ease;
     }
-    .logo-text {
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      letter-spacing: 1px;
+
+    .menu-item i {
+      font-size: 18px;
+      margin-bottom: 4px;
     }
 
-    .logo-text .highlight {
-      color: #ff4444; /* Warna merah untuk aksen */
+    /* Styling untuk gambar icon */
+    .menu-item img {
+      width: 20px;
+      height: 20px;
+      margin-bottom: 4px;
+      filter: brightness(0) invert(1); /* Membuat gambar jadi putih */
     }
-       .navbar {
+
+    .menu-item:hover img {
+      filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(340deg); /* Hover jadi merah */
+    }
+
+    .menu-item:hover {
+      color: #ff4444;
+    }
+
+    /* Tombol VIP */
+    .vip-btn {
+      background: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: #333333; /* Lebih gelap sesuai Figma */
-      padding: 12px 30px;
-      height: 60px;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      transition: all 0.3s ease;
     }
 
+    .vip-btn:hover {
+      background: #f0f0f0;
+      transform: translateY(-1px);
+    }
+
+    .vip-btn i {
+      color: #ffd700;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 10px 20px;
+      }
+      
+      .search-box {
+        width: 200px;
+      }
+      
+      .menu {
+        gap: 15px;
+        font-size: 12px;
+      }
+      
+      .menu-item {
+        display: none;
+      }
+      
+      .menu-item:last-child {
+        display: block;
+      }
+    }
+    
 </style>
